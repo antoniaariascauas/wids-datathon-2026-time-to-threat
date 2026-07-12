@@ -41,6 +41,10 @@ Given patient-level features, predict cumulative probabilities P(event <= t) for
 │   └── metaData.csv
 ```
 
+The Kaggle `sample_submission.csv` template is not tracked; when it is absent the
+pipeline rebuilds it from the test `event_id` column, so it runs end-to-end on the
+committed `train.csv` / `test.csv`.
+
 ## How to Run
 
 ```bash
