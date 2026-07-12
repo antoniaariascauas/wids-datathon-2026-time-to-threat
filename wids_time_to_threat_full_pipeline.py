@@ -1764,7 +1764,14 @@ def main() -> None:
     # Load data
     train = pd.read_csv(_resolve_path("train.csv"))
     test = pd.read_csv(_resolve_path("test.csv"))
-    sample = pd.read_csv(_resolve_path("sample_submission.csv"))
+    # sample_submission.csv is the Kaggle template (event_id + target columns).
+    # It is not tracked in this repo; when absent, rebuild it from the test ids so
+    # the pipeline still runs end-to-end. write_submission fills the prob_* columns
+    # positionally, so keeping test's row order here is the correct alignment.
+    try:
+        sample = pd.read_csv(_resolve_path("sample_submission.csv"))
+    except FileNotFoundError:
+        sample = test[["event_id"]].copy()
 
     # FE
     train = add_feature_engineering(train)
