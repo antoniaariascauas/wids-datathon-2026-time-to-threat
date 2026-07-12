@@ -53,7 +53,7 @@ python wids_time_to_threat_full_pipeline.py
 python wids_time_to_threat_full_pipeline.py --super-sharp --ladder "0,0.4074,0.7143,1"
 
 # Specific models only
-python wids_time_to_threat_full_pipeline.py --models hazard_lgb direct_lgb
+python wids_time_to_threat_full_pipeline.py --models hazard_lgb,direct_lgb
 ```
 
 ## Key Design Decisions
